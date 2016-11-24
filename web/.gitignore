@@ -1,0 +1,6 @@
+# Node modules
+/html/node_modules/
+
+# Ignore js files, we'll compile the typescript during the build
+/**/*.js
+/**/*.js.map
