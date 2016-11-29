@@ -17,27 +17,24 @@ services:
     build: "./api"
     expose:
       - "80"
+    ports:
+      - "81:80"
     depends_on:
-      - "mysql"
+      - "mongo"
       - "redis"
 
-  worker:
-    build: "./worker"
-    depends_on:
-      - "mysql"
-      - "redis"
+#  worker:
+#    build: "./worker"
+#    depends_on:
+#      - "mysql"
+#      - "redis"
 
   redis:
     image: "redis:3.2.5"
     expose:
       - "80"
 
-  mysql:
-    image: "mysql:5.7.16"
+  mongo:
+    image: "mongo:3.2.11"
     expose:
-      - "3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: "fav_foods"
-      MYSQL_DATABASE: "fav_foods"
-      MYSQL_USER: "fav"
-      MYSQL_PASSWORD: "foods"
+      - "27017"

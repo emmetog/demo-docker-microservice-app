@@ -7,9 +7,10 @@ RUN npm config set registry http://registry.npmjs.org
 RUN npm install && npm ls
 RUN mv /app/node_modules /node_modules
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod 0500 /entrypoint.sh
+ENTRYPOINT /entrypoint.sh
+
 ADD . /app
 
-ENV PORT 80
 EXPOSE 80
-
-CMD ["node", "server.js"]

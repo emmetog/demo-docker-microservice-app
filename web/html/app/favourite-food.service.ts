@@ -9,8 +9,7 @@ import {FavouriteFood} from "./favourite-food";
 @Injectable()
 export class FavouriteFoodService {
 
-    // private favouriteFoodsUrl = 'http://expensesync.nimblewarestudios.com/users/1683/accounts';
-    private favouriteFoodsUrl = 'api/favourite-foods';
+    private favouriteFoodsUrl = 'http://127.0.0.1:81/favourite-foods';
 
     private headers = new Headers({'Content-Type': 'application/json'});
 

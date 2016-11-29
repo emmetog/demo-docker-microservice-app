@@ -7,11 +7,13 @@
   "author": "Emmet O'Grady",
   "license": "MIT",
   "dependencies": {
+    "async": "^1.5.0",
     "body-parser": "^1.14.1",
+    "cors": "^2.8.1",
     "express": "^4.13.3",
     "method-override": "^2.3.5",
-    "async": "^1.5.0",
-    "socket.io": "^1.3.7",
-    "request-json": "latest"
+    "mongodb": "^2.2.11",
+    "request-json": "latest",
+    "socket.io": "^1.3.7"
   }
 }

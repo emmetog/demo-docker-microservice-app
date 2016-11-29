@@ -18,7 +18,7 @@ import {FavouriteFoodService} from "./favourite-food.service";
         BrowserModule,
         FormsModule,
         HttpModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService),
+        // InMemoryWebApiModule.forRoot(InMemoryDataService),
         AppRoutingModule,
     ],
     declarations: [
