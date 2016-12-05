@@ -3,16 +3,17 @@ var express = require('express'),
     cors = require('cors');
 var bodyParser = require('body-parser');
 var assert = require('assert');
+var redis = require('redis'),
+    redisClient = redis.createClient({
+        'host': 'redis'
+    });
 
+redisClient.on("error", function (err) {
+    console.log("Error " + err);
+});
 
 var mongoClient = require('mongodb').MongoClient;
 var mongoUrl = 'mongodb://mongo:27017/favourite-foods';
-
-foods = [
-    {id: 1, person: 'Peter', food: 'Pasta Bolognese'},
-    {id: 2, person: 'John', food: 'Pizza'},
-    {id: 3, person: 'Maria', food: 'Omelet'},
-];
 
 mongoOptions = {
     autoReconnect: true,
@@ -39,10 +40,9 @@ mongoClient.connect(mongoUrl, mongoOptions, function (err, db) {
 
         // TODO: get the foods from the db
         console.log('getting foods from db');
-        var dbFoods = db.collection('favourite-foods').find()
+        db.collection('favourite-foods').find()
             .toArray(function (err, docs) {
                 assert.equal(null, err);
-                console.log('foods from db are: ', docs);
                 res.send({data: docs});
             });
     });
@@ -50,7 +50,7 @@ mongoClient.connect(mongoUrl, mongoOptions, function (err, db) {
     app.post('/favourite-foods', function (req, res) {
         console.log('Creating a new favourite food', req.body);
         var person = {person: req.body.person, food: req.body.food};
-        db.collection('favourite-foods').insertOne(person);
+        redisClient.lpush('new-foods', JSON.stringify(person));
         res.send({data: person});
     });
 
