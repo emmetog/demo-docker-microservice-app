@@ -5,11 +5,7 @@ services:
   web:
     build: "./web"
     ports:
-      - "80:80"
-    # For development we compile the .ts
-    # externally and map the volume.
-    volumes:
-      - "./web/html:/app"
+      - "81:80"
     depends_on:
       - "api"
 
@@ -18,7 +14,7 @@ services:
     expose:
       - "80"
     ports:
-      - "81:80"
+      - "82:80"
     depends_on:
       - "mongo"
       - "redis"
@@ -31,8 +27,6 @@ services:
 
   redis:
     image: "redis:3.2.5"
-    expose:
-      - "80"
 
   mongo:
     image: "mongo:3.2.11"

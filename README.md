@@ -51,3 +51,37 @@ foods into the **mongo** database.
 
 A MongoDB database, the favourite foods are stored 
 persistently here.
+
+## Running The Demo
+
+To run the demo, use docker-compose:
+
+```
+$ git clone git@github.com:emmetog/demo-docker-microservice-app.git
+$ cd demo-docker-microservice-app
+$ docker-compose up
+```
+
+That will bring up all five of the services listed 
+above.
+
+The web will be available at [http://127.0.0.1:81](http://127.0.0.1:81) 
+and the api will be available at [http://127.0.0.1:82](http://127.0.0.1:82) 
+(non-standard ports are used to avoid conflict if you already 
+have a webserver listening on port 80).
+
+License
+-------
+
+MIT
+
+Author Information
+------------------
+
+Made with love by Emmet O'Grady.
+
+I am the founder of [NimbleCI](https://nimbleci.com) which builds 
+Docker containers for feature branch workflow projects in Github.
+
+I blog on my [personal blog](http://blog.emmetogrady.com) and about 
+Docker related things on the [NimbleCI blog](http://blog.nimbleci.com).

@@ -10,4 +10,6 @@ ADD html /app/.
 
 EXPOSE 80
 
+RUN ./node_modules/typescript/bin/tsc
+
 CMD ["node", "/app/server.js"]

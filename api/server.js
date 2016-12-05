@@ -36,6 +36,15 @@ mongoClient.connect(mongoUrl, mongoOptions, function (err, db) {
     app.use(cors());
     app.use(bodyParser.json());       // to support JSON-encoded bodies
 
+    app.get('/', function (req, res) {
+        res.send(`
+<h3>Welcome to the favourite foods api!</h3>
+Since you're here you're probably looking for the "favourite-foods" endpoint:<br><br>
+<a href="/favourite-foods">/favourite-foods</a><br><br>
+Or, if you're looking for the web frontend, it's on port 81<br>
+`)
+    });
+
     app.get('/favourite-foods', function (req, res) {
 
         // TODO: get the foods from the db

@@ -10,11 +10,11 @@ local using docker-compose.
 To get all the favourite foods, run this:
 
 ```
-$ curl http://127.0.0.1:81/favourite-foods
+$ curl http://127.0.0.1:82/favourite-foods
 ```
 
 To add a new favourite food to the API, run this:
 
 ```
-$ curl -X POST -H "Content-Type: application/json" --data '{"person":"Peter","food":"Pizza"}' http://127.0.0.1:81/favourite-foods
+$ curl -X POST -H "Content-Type: application/json" --data '{"person":"Peter","food":"Pizza"}' http://127.0.0.1:82/favourite-foods
 ```

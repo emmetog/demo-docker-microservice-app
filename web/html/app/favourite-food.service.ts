@@ -9,7 +9,7 @@ import {FavouriteFood} from "./favourite-food";
 @Injectable()
 export class FavouriteFoodService {
 
-    private favouriteFoodsUrl = 'http://127.0.0.1:81/favourite-foods';
+    private favouriteFoodsUrl = 'http://127.0.0.1:82/favourite-foods';
 
     private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -21,11 +21,6 @@ export class FavouriteFoodService {
             .toPromise()
             .then(response => response.json().data as FavouriteFood[])
             .catch(this.handleError);
-    }
-
-    getFavouriteFood(id: number): Promise<FavouriteFood> {
-        return this.getFavouriteFoods()
-            .then(favFoods => favFoods.find(favFood => favFood.id === id));
     }
 
     create(person: String, food: String): Promise<FavouriteFood> {
