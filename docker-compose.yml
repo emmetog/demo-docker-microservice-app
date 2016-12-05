@@ -23,11 +23,11 @@ services:
       - "mongo"
       - "redis"
 
-#  worker:
-#    build: "./worker"
-#    depends_on:
-#      - "mysql"
-#      - "redis"
+  worker:
+    build: "./worker"
+    depends_on:
+      - "mongo"
+      - "redis"
 
   redis:
     image: "redis:3.2.5"
