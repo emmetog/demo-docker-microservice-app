@@ -4,9 +4,9 @@ containing MongoDB, Redis, a web interface, an API and a queue consumer.
 
 ## The Accompanying Course
 
-In the "[How To Automatically Test Docker Applications](http://docker-courses.teachable.com/p/how-to-automatically-test-docker-applications)" 
-course we create a suite of tests to test each 
-of the "moving parts" described below. The course 
+This demo is used in the online course "[How To Automatically Test Docker Applications](http://docker-courses.teachable.com/p/how-to-automatically-test-docker-applications)" 
+In the couse we create a suite of tests to test each 
+of the five services described below. The course 
 is intended to help developers and devops write 
 automatic tests to ensure that their dockerized 
 services always work as expected.
