@@ -1,0 +1,27 @@
+default:
+
+  suites:
+    web_features:
+      paths:
+        - /root/project/features
+      contexts:
+        - FeatureContext
+
+
+#  formatter:
+#    name:                       pretty
+#    parameters:
+#      decorated:              true
+#      verbose:                false
+#      time:                   true
+#      language:               en
+#      output_path:            null
+#      multiline_arguments:    true
+
+  extensions:
+    Behat\MinkExtension:
+      base_url: 'http://127.0.0.1:85'
+      sessions:
+        default:
+          selenium2:
+            wd_host: "http://phantomjs:4444"

@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+
+  worker:
+    image: demo-docker-microservices-worker
+    depends_on:
+      - "mongo"
+      - "redis"
+
+  redis:
+    image: "redis:3.2.5"
+
+  mongo:
+    image: "mongo:3.2.11"
+    expose:
+      - "27017"

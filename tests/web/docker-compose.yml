@@ -1,0 +1,78 @@
+version: "2"
+
+services:
+
+  web:
+    build: ../../web
+    expose:
+      - "80"
+    ports:
+      - "85:80"
+    depends_on:
+      - "api"
+
+  api:
+    build: ../../api
+    ports:
+      - "127.0.0.1:82:80"
+    depends_on:
+      - "mongo"
+      - "redis"
+
+  worker:
+    build: ../../worker
+    depends_on:
+      - "mongo"
+      - "redis"
+
+  redis:
+    image: "redis:3.2.5"
+
+  mongo:
+    image: "mongo:3.2.11"
+    expose:
+      - "27017"
+
+
+  # The next few services spin up a selenium cluster for behat
+
+#  hub:
+#    image: selenium/hub:2.53.1
+#    ports:
+#      - "4444:4444"
+
+#  hub:
+#    image: elgalu/selenium
+#    ports:
+#      - "4444:24444"
+#      - "5900:25900"
+#    environment:
+#      USE_SELENIUM: 2
+
+  phantomjs:
+    image: wernight/phantomjs:2.1.1
+    ports:
+      - "4444:4444"
+    command: "phantomjs --webdriver 4444"
+
+#  firefox:
+#    image: selenium/node-firefox:2.53.1
+#    ports:
+#      - 5900
+#    environment:
+#      REMOTE_HOST_PARAM: "-maxSession 3 -browser browserName=firefox,maxInstances=3"
+#      HUB_PORT_4444_TCP_ADDR: hub
+#      HUB_PORT_4444_TCP_PORT: 4444
+#    depends_on:
+#      - "hub"
+#    links:
+#      - hub
+
+#  chrome:
+#    image: qualiboo/testing-node-chrome
+#    ports:
+#      - 5900
+#    depends_on:
+#      - "hub"
+#    environment:
+#      HUB_PORT_4444_TCP_ADDR: hub

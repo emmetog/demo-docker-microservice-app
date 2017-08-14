@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+
+  api:
+    image: demo-docker-microservices-api
+    expose:
+      - "80"
+    depends_on:
+      - "mongo"
+      - "redis"
+
+  redis:
+    image: "redis:3.2.5"
+
+  mongo:
+    image: "mongo:3.2.11"
+    expose:
+      - "27017"

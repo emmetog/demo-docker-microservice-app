@@ -1,0 +1,14 @@
+{
+    "name": "emmetog/demo-docker-microservice-web-behat",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "~5.0",
+        "behat/mink-extension": "~1.3",
+        "behat/mink-selenium2-driver": "^1.3",
+        "behat/mink": "^1.7",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-browserkit-driver": "~1.2"
+    },
+    "license": "MIT",
+    "minimum-stability": "stable"
+}
