@@ -10,4 +10,4 @@ RUN yarn install
 
 EXPOSE 4200
 
-CMD ["ng", "serve", "-H", "0.0.0.0"]
+CMD ["ng", "serve", "-H", "0.0.0.0", "--port", "80"]

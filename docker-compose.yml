@@ -5,7 +5,7 @@ services:
   web:
     build: "./web"
     ports:
-      - "81:4200"
+      - "81:80"
     depends_on:
       - "api"
     # Uncomment these for faster development

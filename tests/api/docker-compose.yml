@@ -3,7 +3,7 @@ version: "2"
 services:
 
   api:
-    image: demo-docker-microservices-api
+    build: ../../api
     expose:
       - "80"
     depends_on:
