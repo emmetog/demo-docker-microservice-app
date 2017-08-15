@@ -5,9 +5,12 @@ services:
   web:
     build: "./web"
     ports:
-      - "81:80"
+      - "81:4200"
     depends_on:
       - "api"
+    # Uncomment these for faster development
+#    volumes:
+#      - ./web:/src
 
   api:
     build: "./api"

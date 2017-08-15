@@ -1,4 +1,3 @@
-///<reference path="../node_modules/@types/core-js/index.d.ts"/>
 import {Injectable} from '@angular/core';
 
 import {Headers, Http} from "@angular/http";

@@ -1,16 +1,13 @@
 FROM mhart/alpine-node:8.3.0
 
-WORKDIR /app
+RUN yarn global add @angular/cli@1.3.0
 
-ADD html/package.json /app/package.json
-ADD html/yarn.lock /app/yarn.lock
-#RUN npm config set registry http://registry.npmjs.org
-RUN yarn upgrade -v
+WORKDIR /src
 
-ADD html /app/.
+ADD . /src/
 
-EXPOSE 3000
+RUN yarn install
 
-RUN ./node_modules/typescript/bin/tsc
+EXPOSE 4200
 
-CMD ["node", "/app/server.js"]
+CMD ["ng", "serve", "-H", "0.0.0.0"]
