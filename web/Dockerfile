@@ -8,6 +8,6 @@ ADD . /src/
 
 RUN yarn install
 
-EXPOSE 4200
+EXPOSE 80
 
-CMD ["ng", "serve", "-H", "0.0.0.0", "--port", "80"]
+CMD ["ng", "serve", "-H", "0.0.0.0", "--port", "80", "--disable-host-check"]

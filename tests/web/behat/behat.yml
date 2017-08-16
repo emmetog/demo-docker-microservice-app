@@ -20,8 +20,8 @@ default:
 
   extensions:
     Behat\MinkExtension:
-      base_url: 'http://127.0.0.1:85'
+      base_url: 'http://web:80'
       sessions:
         default:
           selenium2:
-            wd_host: "http://phantomjs:4444"
+            wd_host: "http://hub:4444/wd/hub"

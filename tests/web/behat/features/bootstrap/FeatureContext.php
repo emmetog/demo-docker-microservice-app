@@ -5,16 +5,6 @@ use Behat\MinkExtension\Context\MinkContext;
 class FeatureContext extends MinkContext {
 
     /**
-     * @Given /^I debug$/
-     */
-    public function debug()
-    {
-//        var_dump($this->getMinkParameter('base_url'));
-        $result = $this->getSession()->evaluateScript("$('input').val();");
-        var_dump($result);
-    }
-
-    /**
      * @Then /^wait (\d+) seconds?$/
      */
     public function wait($seconds)
@@ -39,32 +29,17 @@ class FeatureContext extends MinkContext {
         });
     }
 
-    private function waitForXpathNode($xpath, $appear)
-    {
-        $this->waitFor(function($context) use ($xpath, $appear) {
-            try {
-                $nodes = $context->getSession()->getDriver()->find($xpath);
-                if (count($nodes) > 0) {
-                    $visible = $nodes[0]->isVisible();
-                    return $appear ? $visible : !$visible;
-                } else {
-                    return !$appear;
-                }
-            } catch (WebDriver\Exception $e) {
-                if ($e->getCode() == WebDriver\Exception::NO_SUCH_ELEMENT) {
-                    return !$appear;
-                }
-                throw $e;
-            }
-        });
-    }
-
     /**
-     * @Given /^I wait for text "([^"]+)" to (appear|disappear)$/
+     * @Given /^I wait for text "([^"]+)" to appear$/
      */
-    public function iWaitForText($text, $appear)
+    public function iWaitForTextToAppear($text)
     {
-        $this->waitForXpathNode(".//*[contains(normalize-space(string(text())), \"$text\")]", $appear == 'appear');
+        var_dump( $this->getSession()->evaluateScript('document.documentElement.innerHTML') ); die;
+        var_dump( $this->getSession()->getDriver()->getContent() ); die;
+
+        $this->waitFor(function ($context) use ($text) {
+            return strpos($context->getSession()->getPage()->getContent(), $text) !== false;
+        });
     }
 
     private function waitFor($fn, $timeout = 5000)
@@ -79,4 +54,41 @@ class FeatureContext extends MinkContext {
         }
         throw new \Exception("waitFor timed out");
     }
+
+//    /**
+//     * @When /^I wait for all ajax to load$/
+//     */
+//    public function waitForAjax()
+//    {
+//        $waitTime = 10000;
+//        try {
+//            //Wait for Angular
+//            $angularIsNotUndefined = $this->getSession()->evaluateScript("return (typeof angular != 'undefined')");
+//            if ($angularIsNotUndefined) {
+//                //If you run the below code on a page ending in #, the page reloads.
+//                if (substr($this->getSession()->getCurrentUrl(), -1) !== '#') {
+//                    $angular = 'angular.getTestability(document.body).whenStable(function() {
+//                window.__testable = true;
+//            })';
+//                    $this->getSession()->evaluateScript($angular);
+//                    $this->getSession()->wait($waitTime, 'window.__testable == true');
+//                }
+//
+//                /*
+//                 * Angular JS AJAX can't be detected overall like in jQuery,
+//                 * but we can check if any of the html elements are marked as showing up when ajax is running,
+//                 * then wait for them to disappear.
+//                 */
+//                $ajaxRunningXPath = "//*[@ng-if='ajax_running']";
+//                $this->waitForElementToDisappear($ajaxRunningXPath, $waitTime);
+//            }
+//
+//            //Wait for jQuery
+//            if ($this->getSession()->evaluateScript("return (typeof jQuery != 'undefined')")) {
+//                $this->getSession()->wait($waitTime, '(0 === jQuery.active && 0 === jQuery(\':animated\').length)');
+//            }
+//        } catch (Exception $e) {
+//            var_dump($e->getMessage()); //Debug here.
+//        }
+//    }
 }

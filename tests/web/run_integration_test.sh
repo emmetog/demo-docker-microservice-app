@@ -15,11 +15,11 @@ cleanup() {
     docker-compose kill
     docker-compose rm -f
 }
-#trap "cleanup" INT TERM EXIT
+trap "cleanup" INT TERM EXIT
 
-echo "Waiting for mongo to spin up";
+echo "Waiting for mongo and the app to spin up";
 # TODO: Improve this by polling instead
-sleep 3
+sleep 20
 
 # Insert data
 echo -e "\n>>>> PRE-POPULATING DATABASE"
