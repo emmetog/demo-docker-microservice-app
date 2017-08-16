@@ -3,7 +3,7 @@ version: "2"
 services:
 
   worker:
-    image: demo-docker-microservices-worker
+    build: ../../worker
     depends_on:
       - "mongo"
       - "redis"

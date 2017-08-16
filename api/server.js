@@ -38,10 +38,11 @@ mongoClient.connect(mongoUrl, mongoOptions, function (err, db) {
 
     app.get('/', function (req, res) {
         res.send(`
-<h3>Welcome to the favourite foods api!</h3>
-Since you're here you're probably looking for the "favourite-foods" endpoint:<br><br>
+<h3>Welcome to the favourite foods API!</h3>
+This API is consumed by the web service, it simply sends messages to
+a Redis queue. Since you're here you're probably looking for the "favourite-foods" endpoint of this API:<br><br>
 <a href="/favourite-foods">/favourite-foods</a><br><br>
-Or, if you're looking for the web frontend, it's on port 81<br>
+Or, if you're looking for the web frontend (which uses this API behind the scenes), it's on port 81<br>
 `)
     });
 
