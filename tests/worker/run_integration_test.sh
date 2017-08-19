@@ -6,6 +6,7 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo -e "\n>>>> STARTING DOCKER-COMPOSE"
+docker-compose build
 docker-compose up -d
 
 # Add a trap so the containers will always be cleaned
