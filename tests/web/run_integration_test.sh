@@ -30,7 +30,8 @@ docker run --rm -it --net web_default -v $DIR/db-preload-data.js:/db-preload-dat
 
 # Run tests
 echo -e "\n>>>> RUNNING TESTS"
-docker run --rm -it --net web_default -v $DIR/behat:/root/project tvial/behat behat
+#docker run --rm -it --net web_default -v $DIR/behat:/root/project tvial/behat behat
+docker run --rm -it --net web_default -v $DIR/casperjs:/data zopanix/casperjs test --log-level=debug --verbose=true homepage.js
 
 if [ "$?" != "0" ]; then
     echo "Integration tests FAILED :("
