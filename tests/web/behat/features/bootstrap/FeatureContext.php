@@ -34,9 +34,6 @@ class FeatureContext extends MinkContext {
      */
     public function iWaitForTextToAppear($text)
     {
-        var_dump( $this->getSession()->evaluateScript('document.documentElement.innerHTML') ); die;
-        var_dump( $this->getSession()->getDriver()->getContent() ); die;
-
         $this->waitFor(function ($context) use ($text) {
             return strpos($context->getSession()->getPage()->getContent(), $text) !== false;
         });
@@ -54,41 +51,4 @@ class FeatureContext extends MinkContext {
         }
         throw new \Exception("waitFor timed out");
     }
-
-//    /**
-//     * @When /^I wait for all ajax to load$/
-//     */
-//    public function waitForAjax()
-//    {
-//        $waitTime = 10000;
-//        try {
-//            //Wait for Angular
-//            $angularIsNotUndefined = $this->getSession()->evaluateScript("return (typeof angular != 'undefined')");
-//            if ($angularIsNotUndefined) {
-//                //If you run the below code on a page ending in #, the page reloads.
-//                if (substr($this->getSession()->getCurrentUrl(), -1) !== '#') {
-//                    $angular = 'angular.getTestability(document.body).whenStable(function() {
-//                window.__testable = true;
-//            })';
-//                    $this->getSession()->evaluateScript($angular);
-//                    $this->getSession()->wait($waitTime, 'window.__testable == true');
-//                }
-//
-//                /*
-//                 * Angular JS AJAX can't be detected overall like in jQuery,
-//                 * but we can check if any of the html elements are marked as showing up when ajax is running,
-//                 * then wait for them to disappear.
-//                 */
-//                $ajaxRunningXPath = "//*[@ng-if='ajax_running']";
-//                $this->waitForElementToDisappear($ajaxRunningXPath, $waitTime);
-//            }
-//
-//            //Wait for jQuery
-//            if ($this->getSession()->evaluateScript("return (typeof jQuery != 'undefined')")) {
-//                $this->getSession()->wait($waitTime, '(0 === jQuery.active && 0 === jQuery(\':animated\').length)');
-//            }
-//        } catch (Exception $e) {
-//            var_dump($e->getMessage()); //Debug here.
-//        }
-//    }
 }

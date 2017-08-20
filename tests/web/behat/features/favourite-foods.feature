@@ -6,14 +6,11 @@ Feature: Favourite Foods
   @javascript
   Scenario: Adding a new favourite food
     Given I am on "/"
-#    When I wait for all ajax to load
-    Then wait 2 seconds
-#    Then print last response
-    When I wait for text "TestProject" to appear
+    #Then wait 2 seconds
     When I wait for text "My Favourite Foods" to appear
+    When I should see "Paddy"
     When I fill in "Patrick" for "person"
     When I fill in "Hamburgers" for "food"
-    When I press "add"
+    When I press "Add"
     Then print last response
-    Then wait 60 seconds
-    Then I wait for text "Patrick loves Hamburgers" to appear
+    Then I wait for text "Patrick" to appear

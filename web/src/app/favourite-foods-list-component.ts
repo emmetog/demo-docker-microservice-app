@@ -10,7 +10,7 @@ import {FavouriteFoodService} from "./favourite-food.service";
             <div>
                 <label>Person:</label> <input id="person" #personName placeholder="Peter" />
                 <label>Food:</label> <input id="food" #foodName placeholder="Pizza"/>
-                <button (click)="add(personName.value, foodName.value); personName.value=''; foodName.value=''">
+                <button id="add" (click)="add(personName.value, foodName.value); personName.value=''; foodName.value=''">
                     Add
                 </button>
             </div>

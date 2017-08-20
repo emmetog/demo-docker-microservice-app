@@ -5,6 +5,8 @@ set -e
 # Get the current directory
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+cd $DIR
+
 echo -e "\n>>>> STARTING DOCKER-COMPOSE"
 docker-compose build
 docker-compose up -d
@@ -29,7 +31,6 @@ docker run --rm -it --net web_default -v $DIR/db-preload-data.js:/db-preload-dat
 # Run tests
 echo -e "\n>>>> RUNNING TESTS"
 docker run --rm -it --net web_default -v $DIR/behat:/root/project tvial/behat behat
-
 
 if [ "$?" != "0" ]; then
     echo "Integration tests FAILED :("
