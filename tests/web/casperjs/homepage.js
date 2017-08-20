@@ -20,10 +20,14 @@ casper.test.begin('Tests homepage structure', function suite(test) {
 
     casper.start('http://web', function() {
 
+        // This works because the title is set in the "parent" template.
         test.assertTitle("TestProject", "Title is correct");
 
         casper.wait(2000);
 
+        // This fails, I'm guessing because the h2 is only in the "child" template,
+        // it seems that CasperJS doesn't render the angular2 app correctly
+        // and the child route templates are not injected into the page correctly.
         test.assertVisible('h2');
     });
 
