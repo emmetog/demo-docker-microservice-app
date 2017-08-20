@@ -70,6 +70,37 @@ and the api will be available at [http://127.0.0.1:82](http://127.0.0.1:82)
 (non-standard ports are used to avoid conflict if you already 
 have a webserver listening on port 80).
 
+## Running The Tests
+The functional tests for the Web, API and Queue Consumer are all
+in the `tests/` directory. To run the tests, just run the `run_integration_test.sh` 
+script in each directory. For example, to run the web tests:
+
+```bash
+$ cd demo-docker-microservices-app
+$ ./tests/web/run_integration_test.sh
+```
+
+To run the API tests:
+
+```bash
+$ cd demo-docker-microservices-app
+$ ./tests/api/run_integration_test.sh
+```
+
+And to run the queue consumer tests:
+
+```bash
+$ cd demo-docker-microservices-app
+$ ./tests/worker/run_integration_test.sh
+```
+
+Note: Everything needed for the tests are inside docker containers. In
+other words you only need Docker installed in order to run all tests,
+you don't need apache, PHP, JS, CasperJS, PhantomJS, etc.
+
+Tests might take longer the first time you run them because the 
+docker images containing all these tools need to be downloaded.
+
 License
 -------
 
