@@ -8,7 +8,7 @@ import {FavouriteFood} from "./favourite-food";
 @Injectable()
 export class FavouriteFoodService {
 
-    private favouriteFoodsUrl = 'http://127.0.0.1:82/favourite-foods';
+    private favouriteFoodsUrl = 'http://api/favourite-foods';
 
     private headers = new Headers({'Content-Type': 'application/json'});
 

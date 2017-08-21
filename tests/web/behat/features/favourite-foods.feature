@@ -6,11 +6,9 @@ Feature: Favourite Foods
   @javascript
   Scenario: Adding a new favourite food
     Given I am on "/"
-    #Then wait 2 seconds
     When I wait for text "My Favourite Foods" to appear
     When I should see "Paddy"
     When I fill in "Patrick" for "person"
     When I fill in "Hamburgers" for "food"
     When I press "Add"
-    Then print last response
     Then I wait for text "Patrick" to appear
